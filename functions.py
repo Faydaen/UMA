@@ -14,42 +14,24 @@ def edit(objectName):
 
         # входим в режим редактирования
         bpy.ops.object.mode_set(mode='EDIT')
-
-# выделить арматуру
-def getArmature():
-    if (bpy.context.object.type == "ARMATURE"):
-        pass
-    else:
-        pass
-
         
 # выделить и активировать одну кость (с остальных снять выделение)
-def selectOneBone(boneName = 'head'):
+def select_one_bone(boneName = 'head'):
     for bone in bpy.context.object.data.edit_bones:
         bone.select = False
     bpy.context.object.data.edit_bones[boneName].select = True
     bpy.data.armatures[0].edit_bones.active  = bpy.context.object.data.edit_bones[boneName]
 
-
 # получить список имён выделенных костей
-#def getSelectedBonesNames(exclude=None):
-def getSelectedBonesNames():
+def get_selected_bones_names():
     selected = []
     for bone in bpy.context.object.data.edit_bones:
-        #if exclude is not None and exclude == bone.name:
-        #    continue
-
         if (bone.select):
             selected.append(bone.name)
     return selected        
 
-
-def assaciateSelectedWetixWith(vertexGroupName):
-    pass
-
-
 # выделить вертексы указанных групп вертексов
-def selectVetetex(names = [], objectName = 'Genesis3Female.Shape'):
+def select_vetetex(names = [], objectName = 'Genesis3Female.Shape'):
     # снимаем выделение со всех вертексов
     bpy.ops.mesh.select_all(action='DESELECT')
     vg = bpy.data.objects[objectName].vertex_groups
@@ -59,3 +41,16 @@ def selectVetetex(names = [], objectName = 'Genesis3Female.Shape'):
             vg.active_index = vg[name].index
             bpy.ops.object.vertex_group_select()
 
+
+
+
+#### В разаботке ####
+
+# выделить арматуру // чтобы работало через контекст, а не через хардкод
+def getArmature():
+    if (bpy.context.object.type == "ARMATURE"):
+        pass
+    else:
+        pass
+def assaciate_selected_wetix_with():
+    print("dadd")

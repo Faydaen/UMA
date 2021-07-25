@@ -10,17 +10,11 @@ class UMA_PT_tools_panel(bpy.types.Panel):
     bl_category = "UMA"
 
     def draw(self, context):
-        self.layout.label(text="Объеденить дочерние кости")
+        self.layout.label(text="Работа с костями")
         row = self.layout.row()
-        row.operator("uma.select_all_children", text="Выделить вертиксы")
-        #row = self.layout.row()
-        # todo - change
-        #row.operator("uma.select_all_children", text="Выделить вертексы")
-
-
-
-
-
+        row.operator("uma.combine_children_bones", text="Объеденить кость")
+        row = self.layout.row()
+        row.operator("uma.add_system_bones", text="Добавить служебные кости")
 
 def register():
     bpy.utils.register_class(UMA_PT_tools_panel)

@@ -1,5 +1,9 @@
 import bpy
+import sys
+import importlib
 import functions
+
+importlib.reload(sys.modules['functions'])
 
 class UMA_OP_add_system_bones(bpy.types.Operator):    
     bl_idname = 'uma.add_system_bones' 
@@ -7,7 +11,7 @@ class UMA_OP_add_system_bones(bpy.types.Operator):
     bl_options = {"REGISTER", "UNDO"}
     
     def execute(self, context):
-        functions.edit(context.object.name)
+        functions.edit('Genesis3Female')
         
         self.createBone('Position')
         self.createBone('Global')

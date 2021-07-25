@@ -7,10 +7,10 @@ print("_________________________________________________________________________
 
 addons_dir = "C:\\Program Files\\Blender Foundation\\Blender 2.83\\2.83\\scripts\\addons"
 addon_name ="UMA"
-modulesNames = ['view','select_children']
+modulesNames = ['view','combine_children_bones','add_system_bones']
 import_path = os.path.join(addons_dir, addon_name)
 
-# для того чтобы можно было импортировать из модулей (например для function)
+# если не подключить, то при выполении из бледера, не сможет импортивать общие модули (на текущий момент только functions)
 if (import_path not in sys.path):
     sys.path.append(import_path)
 
